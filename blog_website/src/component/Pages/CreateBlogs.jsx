@@ -25,7 +25,7 @@ export const CreateBlogs = () => {
 
   return (
     <HStack w={"30%"} m={"5% auto"} className='create_blog'>
-    <FormControl isRequired>
+    <FormControl >
       <FormLabel>Title</FormLabel>
       <Input placeholder='Title' name='title' value={blog.title} onChange={(e)=>{setBlog({...blog,[e.target.name]:e.target.value})}} />
       <FormLabel>Type</FormLabel>
