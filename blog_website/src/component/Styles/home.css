@@ -4,3 +4,9 @@
     margin: 40px 60px;
     gap: 20px;
 }
+.home{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin: 40px 60px;
+    gap: 20px;
+}

@@ -1,4 +1,4 @@
-import { DELOLD, STORE_DATA, WHO } from "./actionTypes"
+import { DELOLD, HOME_BLOG_ARRAY, STORE_DATA, WHO } from "./actionTypes"
 
 export const storeData=(payload)=>{
  return{
@@ -17,6 +17,13 @@ export const delData=(payload)=>{
 export const whoLogin=(payload)=>{
    return {
       type:WHO,
+      payload
+   }
+}
+
+export const homeBlogsArray=(payload)=>{
+   return{
+      type:HOME_BLOG_ARRAY,
       payload
    }
 }
