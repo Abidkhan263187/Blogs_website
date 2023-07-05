@@ -1,31 +1,31 @@
 /* sign up  */
 
-.signUp_form{
+#signUp_form{
     border :2px solid #068181;
     padding: 30px 60px;
     border-radius: 10px;
 
 }
-.signUp_form input{
+#signUp_form input{
     margin: 5px 0px;
 }
-.signUp_form button{
+#signUp_form button{
     margin: 30px 0px 0px 0px;
     background-color: #068181;
     color: white;
     font-weight: 700;
 }
-.login_form{
+#login_form{
     border :2px solid #068181;
     padding: 30px 60px;
     border-radius: 10px;
 }
-.login_form button{
+#login_form button{
     margin: 30px 0px 0px 0px;
     background-color: #068181;
     color: white;
     font-weight: 700;
 }
-.login_form input{
+#login_form input{
     margin: 3px 0px;
 }

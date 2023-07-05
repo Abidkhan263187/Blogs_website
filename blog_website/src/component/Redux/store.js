@@ -5,6 +5,6 @@ export const store= createStore(reducer,applyMiddleware(thunk))
 
 
 store.subscribe(()=>{
-    console.log(store.getState().homeBlogArray)
+    console.log(store.getState().load)
   
 })

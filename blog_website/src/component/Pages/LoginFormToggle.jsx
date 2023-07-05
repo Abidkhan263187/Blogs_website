@@ -3,6 +3,7 @@ import { Box, Button, FormControl, FormLabel, Input, Stack } from '@chakra-ui/re
 import { loginUser, signUpUser } from '../Redux/api';
 import {useDispatch} from 'react-redux'
 import '../Styles/login_signup.css'
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
 
@@ -10,8 +11,9 @@ const LoginForm = () => {
     email: '',
     password: '',
   });
- 
-  const dispatch=useDispatch()
+
+  const navigate=useNavigate();
+  const dispatch=useDispatch();
 
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
@@ -23,6 +25,7 @@ const LoginForm = () => {
     e.preventDefault();
     console.log(loginData)
    dispatch(loginUser(loginData))
+   navigate('/')
     setLoginData({
       email: '',
       password: '',
@@ -32,7 +35,7 @@ const LoginForm = () => {
 
   return (
     <Box w={'30%'} m={'auto'} mx="auto" p="20px" >
-      <form class="login_form" onSubmit={handleLoginSubmit}>
+      <form id="login_form" onSubmit={handleLoginSubmit}>
         <Stack spacing="20px">
           <FormControl>
             <FormLabel>Email</FormLabel>
@@ -89,7 +92,7 @@ const RegisterForm = () => {
 
   return (
     <Box w={'30%'} m={'auto'} mx="auto" p="20px">
-      <form class='signUp_form' onSubmit={handleRegisterSubmit}>
+      <form id='signUp_form' onSubmit={handleRegisterSubmit}>
         <Stack spacing="10px">
         <FormControl>
             <FormLabel>Name</FormLabel>

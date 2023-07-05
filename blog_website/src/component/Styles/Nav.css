@@ -1,10 +1,10 @@
 .navbar{
-    border: 1px solid;
+    
     display: flex;
     justify-content: center;
     gap: 60px;
     padding: 10px;
-    background-color: rgb(6, 129, 129);
+    background-color:#3182ce;
     color: white;
     font-weight: 700;
     align-items: center;
