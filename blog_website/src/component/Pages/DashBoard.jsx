@@ -9,7 +9,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Link } from 'react-router-dom';
 import { Footer } from './Footer';
-
+import { useSearchParams } from 'react-router-dom';
 export const DashBoard = () => {
   const carouselImages = [
     'https://www.candorblog.com/wp-content/uploads/2017/05/travel-022.jpg',
@@ -30,6 +30,7 @@ export const DashBoard = () => {
     type: '',
     content: ''
   });
+  const [searchParams,setSearchParams] = useSearchParams()
 
   const handleOpen = (id) => {
     setIsOpen(true);
@@ -40,37 +41,53 @@ export const DashBoard = () => {
 
   const [Loading, setLoad] = useState(true)
   const token = JSON.parse(localStorage.getItem('token'));
-  console.log(token)
-
-  const { blogArray, load } = useSelector((store) => {
-    return store
-  })
+  // const { blogArray, load } = useSelector((store) => {
+  //   return store
+  // })
 
   const[array,setArray]=useState([])
-  const getData = async() => {
-    try {
-         await axios.get('http://localhost:5000/blog/dashboard', {
-            headers: {
-                Authorization: 'Bearer ' + token,
-                'Content-Type': 'application/json'
-            }
-        }).then(({data})=>{
-            // dispatch(storeData(data.blogList))
-          console.log(data.blogList)
-            setArray(data.blogList)
-            setLoad(false) 
-        })
-    } catch (error) {
-        console.log(error);
+  const getData = async () => {
+    const type = searchParams.get('type');
+    const sortby=searchParams.get('sortby');
+    const order=searchParams.get('order');
+    let url = 'http://localhost:5000/blog/dashboard';
+  
+    if (type !== null && type !== '') {
+      url += `?type=${type}`;
+      console.log("type=> ",url)
     }
-};
 
+    if(order !== null){
+      if(type ){
+        url+=`&sortBy=createdAt&order=${order}`;
+        console.log(url)
+      }else{
+        url+=`?sortBy=createdAt&order=${order}`;
+      }
+    }
+   
+    try {
+      await axios.get(url, {
+        headers: {
+          Authorization: 'Bearer ' + token,
+          'Content-Type': 'application/json'
+        }
+      }).then(({ data }) => {
+        console.log(data.blogList);
+        setArray(data.blogList);
+        setLoad(false);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
   useEffect(() => {
-    getData()
-    setLoad(false) 
+    getData();
+    setLoad(false);
     window.scrollTo(0, 0);
-  }, [token,Loading]);
-
+  }, [token, Loading, searchParams]);
+  
   const handleUpdate = () => {
 
     dispatch(updateBlogObj(editID, updateBlog,token))
@@ -89,6 +106,29 @@ export const DashBoard = () => {
   return (
     <Box> 
       <Heading   p={'5px'} mt={'60px'} size={'lg'}>My Blogs</Heading>
+       <Flex justifyContent={'space-between'} p={'0px 60px'} className='sorting_nav'>
+        <Box className='sorting_nav_left' onClick={(e)=>{
+          setSearchParams({
+            type:e.target.value
+          })
+        }}>
+          <Button >Filter</Button>
+          <Button value={"Travelling"}>Travel</Button>
+          <Button value={'Marketing'}>Market</Button>
+          <Button value={'Life'} >Life</Button>
+          <Button value={'Technology'} >Technology</Button>
+        </Box>
+        <Box className='sorting_nav_right' mr={"15px"} onClick={(e)=>{
+          setSearchParams({
+            sortBy:"createdAt",
+            order:e.target.value
+          })
+        }}>
+        <Button>Sort</Button>
+          <Button value={'asc'} >asc</Button>
+          <Button value={'desc'}>desc</Button>
+        </Box>
+       </Flex>
       {Loading ? (<Box margin={"5% auto"}>
         <Spinner m={"auto"} size='xl' color='blue.500' thickness='2px' emptyColor='gray.200' />
         <Heading mt={'10px'} size={"lg"}> Please wait ....</Heading>
@@ -197,7 +237,7 @@ export const DashBoard = () => {
                 </ModalContent>
               </Modal></>
 
-          )) : <Box > <Heading size={"lg"} >  {token === '' ? "Please Login !" : '' }</Heading> </Box>
+          )) : <Box > <Heading size={"lg"} >  {token === '' ? "Please Login !" : 'no blogs' }</Heading> </Box>
           }
 
         </Box>)

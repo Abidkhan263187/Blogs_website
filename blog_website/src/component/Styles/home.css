@@ -13,7 +13,7 @@
     width: 90%;
 }
 .home >div{
-  transform: scale(.96);
+  transform: scale(.91);
   transition: transform 0.3s ease-in-out;
  
 }

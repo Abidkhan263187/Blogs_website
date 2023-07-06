@@ -23,7 +23,8 @@ export const SectionOne = () => {
       bgSize="cover"
       bgPosition="center"
       height={'400px'}
-      m={'20px'}
+      m={'80px 20px 20px 20px'}
+    
     >
       <Flex direction={['column', 'column', 'row']} margin="10px 0%" justifyContent={'space-between'} h={"100%"} align='center' >
 
