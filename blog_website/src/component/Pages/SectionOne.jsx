@@ -11,8 +11,11 @@ import {
   Input,
 } from '@chakra-ui/react';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaSearch } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 export const SectionOne = () => {
+
+  const navigate=useNavigate()
   return (
     <Box
       p={8}
@@ -33,7 +36,7 @@ export const SectionOne = () => {
             your stories, and your unique perspective. Unleash your thoughts, and let the
             world be your audience. Share your voice, and watch as it reverberates through the vast expanse of the blogosphere.
           </Text>
-          <Button w={"30%"} m={'auto'} colorScheme='blue' size='md'>
+          <Button onClick={()=> navigate('/reg')} w={"30%"} m={'auto'} color={'white'} bgColor='#068181' size='md'>
             Get Started
           </Button>
         </Stack>
@@ -53,42 +56,46 @@ export const SectionOne = () => {
               />
               <IconButton
                 icon={<FaSearch />}
-                colorScheme="blue"
+              bgColor='#068181'
                 aria-label="Search"
                 size="sm"
                 rounded="full"
+                color={'white'}
               />
             </Flex>
             <IconButton
               icon={<FaFacebook />}
-              colorScheme="blue"
+            bgColor='#068181'
               aria-label="Facebook"
               size="sm"
               rounded="full"
+              color={'white'}
               mr={2}
             />
             <IconButton
               icon={<FaTwitter />}
-              colorScheme="blue"
+            bgColor='#068181'
               aria-label="Twitter"
               size="sm"
               rounded="full"
+              color={'white'}
               mr={2}
             />
             <IconButton
               icon={<FaInstagram />}
-              colorScheme="blue"
+            bgColor='#068181'
               aria-label="Instagram"
               size="sm"
               rounded="full"
+              color={'white'}
               mr={2}
             />
             <IconButton
               icon={<FaLinkedin />}
-              colorScheme="blue"
+            bgColor='#068181'
               aria-label="LinkedIn"
               size="sm"
-              rounded="full"
+              rounded="full" color={'white'}
             />
           </Box>
           <Flex m={'auto'} alignItems={"center"} w={"80%"}>
@@ -96,20 +103,23 @@ export const SectionOne = () => {
             <Button
               w={'40%'}
               m={'auto'}
-              colorScheme="blue"
+              bgColor="#068181"
               size="sm"
               mt={4}
-              rounded="full"
+              rounded="full"color={'white'}
+              onClick={()=>navigate('/create')}
             >
               Create
             </Button>
             <Button
               w={'40%'}
               m={'auto'}
-              colorScheme="blue"
+              bgColor="#068181"
               size="sm"
               mt={4}
               rounded="full"
+              color={'white'}
+              onClick={()=>navigate('/about')}
             >
               Contact
             </Button>

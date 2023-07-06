@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { delData, homeBlogsArray, setLoading, storeData, whoLogin } from './action';
+import { blogObj, delData, homeBlogsArray, setLoading, storeData, whoLogin } from './action';
 
 export const fetchData = () => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
@@ -136,4 +136,16 @@ export const updateBlogObj = (id, obj,token) => async (dispatch) => {
       console.log('Error:', error);
     }
   };
+
+  export const singleBlogObj=(id)=> async (dispatch)=>{
+    console.log(id)
+try {
+    axios.get(`http://localhost:5000/blog/single/${id}`).then(({data})=>{
+        console.log(data)
+        dispatch(blogObj(data.single))
+    })
+} catch (error) {
+    console.log(error)
+}
+  }
   

@@ -1,11 +1,15 @@
-.navbar{
-    
+.navbar {
     display: flex;
     justify-content: center;
     gap: 60px;
-    padding: 10px;
-    background-color:#3182ce;
+    padding: 15px;
+    background-color: #068181;
     color: white;
     font-weight: 700;
     align-items: center;
-}
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999; /* Adjust the z-index value as needed */
+  }

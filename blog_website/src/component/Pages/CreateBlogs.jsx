@@ -24,15 +24,15 @@ export const CreateBlogs = () => {
   }
 
   return (
-    <HStack w={"30%"} m={"5% auto"} className='create_blog'>
-    <FormControl >
+    <HStack w={"80%"} m={"5% auto"} className='create_blog'>
+    <FormControl className='Create_container'>
       <FormLabel>Title</FormLabel>
       <Input placeholder='Title' name='title' value={blog.title} onChange={(e)=>{setBlog({...blog,[e.target.name]:e.target.value})}} />
       <FormLabel>Type</FormLabel>
       <Input placeholder='Type' name='type' value={blog.type} onChange={(e)=>{setBlog({...blog,[e.target.name]:e.target.value})}} />
       <FormLabel>Content</FormLabel>
       <Textarea  placeholder='Write....' name='content' value={blog.content} onChange={(e)=>{setBlog({...blog,[e.target.name]:e.target.value})}}/>
-      <Button onClick={handlePost}>Post</Button>
+      <Button  onClick={handlePost}>Post</Button>
     </FormControl>
    
   </HStack>

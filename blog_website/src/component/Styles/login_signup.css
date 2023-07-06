@@ -8,6 +8,7 @@
 }
 #signUp_form input{
     margin: 5px 0px;
+    border-color: gray;
 }
 #signUp_form button{
     margin: 30px 0px 0px 0px;
@@ -28,4 +29,5 @@
 }
 #login_form input{
     margin: 3px 0px;
+    border-color: gray;
 }

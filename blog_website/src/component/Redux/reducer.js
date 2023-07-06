@@ -1,11 +1,12 @@
-import { DELOLD, HOME_BLOG_ARRAY, LOAD, RELOAD, STORE_DATA, WHO } from "./actionTypes"
+import {  DELOLD, HOME_BLOG_ARRAY, LOAD, SINGLE_BLOG, STORE_DATA, WHO } from "./actionTypes"
 
 
 const initialState = {
     blogArray: [],
     homeBlogArray: [],
     who: '',
-    load: false
+    load: false,
+    single:{}
 
 }
 
@@ -25,6 +26,10 @@ export const reducer = (store = initialState, action) => {
         }
         case LOAD: {
             return { ...store, load: action.payload }
+        }
+    
+        case SINGLE_BLOG:{
+            return {...store,single: action.payload}
         }
 
         default: return store

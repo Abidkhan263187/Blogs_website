@@ -6,6 +6,7 @@ import { DashBoard } from '../Pages/DashBoard'
 import { CreateBlogs } from '../Pages/CreateBlogs'
 import { Home } from '../Pages/Home'
 import LoginFormToggle from '../Pages/LoginFormToggle'
+import { SingleBlog } from '../Pages/SingleBlog'
 
 export const AllRoutes = () => {
     return (
@@ -16,6 +17,7 @@ export const AllRoutes = () => {
                 <Route path={'/about'} element={<About />} />
                 <Route path={'/reg'} element={<LoginFormToggle />} />
                 <Route path={'/create'} element={<CreateBlogs />} />
+                <Route path={'/singleBlog/:id'} element={<SingleBlog/>} />
             </Routes>
 
         </Box>

@@ -1,4 +1,4 @@
-import { DELOLD, HOME_BLOG_ARRAY, LOAD, STORE_DATA, WHO } from "./actionTypes"
+import { BLOG_ID, DELOLD, HOME_BLOG_ARRAY, LOAD, SINGLE_BLOG, STORE_DATA, WHO } from "./actionTypes"
 
 export const storeData = (payload) => {
    return {
@@ -33,6 +33,14 @@ export const setLoading = (payload) => {
       type: LOAD,
       payload
    }
+}
+
+
+export const blogObj=(payload)=>{
+  return {
+   type:SINGLE_BLOG,
+   payload
+  }
 }
 
 
