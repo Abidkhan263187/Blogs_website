@@ -146,12 +146,13 @@ export const updateBlogObj = (id, obj, token) => async (dispatch) => {
 export const singleBlogObj = (id) => async (dispatch) => {
     console.log(id)
     try {
-        axios.get(`https://tired-cormorant.cyclic.app/single/${id}`).then(({ data }) => {
+        axios.get(`https://tired-cormorant.cyclic.app/blog/single/${id}`).then(({ data }) => {
             console.log(data)
             dispatch(blogObj(data.single))
         })
     } catch (error) {
         console.log(error)
+        
     }
 }
 

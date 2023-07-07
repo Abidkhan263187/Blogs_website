@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Button, FormControl, FormLabel, Input, Stack } from '@chakra-ui/react';
 import { loginUser, signUpUser } from '../Redux/api';
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import '../Styles/login_signup.css'
 import { useNavigate } from 'react-router-dom';
 import { Footer } from './Footer';
@@ -13,20 +13,20 @@ const LoginForm = () => {
     password: '',
   });
 
-  const navigate=useNavigate();
-  const dispatch=useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
-    setLoginData((prevData) => ({ ...prevData, [name]: value })); 
+    setLoginData((prevData) => ({ ...prevData, [name]: value }));
   };
 
 
-  const handleLoginSubmit = (e) =>{
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
     console.log(loginData)
-   dispatch(loginUser(loginData))
-   navigate('/')
+    dispatch(loginUser(loginData))
+    navigate('/')
     setLoginData({
       email: '',
       password: '',
@@ -35,7 +35,7 @@ const LoginForm = () => {
 
 
   return (
-    <Box w={['100%','','','30%']} m={'auto'} mx="auto" p="20px" >
+    <Box w={['100%', '', '', '30%']} m={'auto'} mx="auto" p="20px" >
       <form id="login_form" onSubmit={handleLoginSubmit}>
         <Stack spacing="20px">
           <FormControl>
@@ -68,7 +68,7 @@ const LoginForm = () => {
 
 const RegisterForm = () => {
   const [registerData, setRegisterData] = useState({
-    name:'',
+    name: '',
     email: '',
     password: '',
   });
@@ -80,22 +80,22 @@ const RegisterForm = () => {
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
-   signUpUser(registerData)
-   setRegisterData({
-    name:'',
-    email: '',
-    password: '',
-  
-   })
-   
+    signUpUser(registerData)
+    setRegisterData({
+      name: '',
+      email: '',
+      password: '',
+
+    })
+
   };
 
 
   return (
-    <Box w={['100%','','','30%']} m={'auto'} mx="auto" p="20px">
+    <Box w={['100%', '', '', '30%']} m={'auto'} mx="auto" p="20px">
       <form id='signUp_form' onSubmit={handleRegisterSubmit}>
         <Stack spacing="10px">
-        <FormControl>
+          <FormControl>
             <FormLabel>Name</FormLabel>
             <Input
               type="text"
@@ -125,7 +125,7 @@ const RegisterForm = () => {
               onChange={handleRegisterChange}
             />
           </FormControl>
-         
+
           <Button type="submit">Register</Button>
         </Stack>
       </form>
@@ -134,38 +134,38 @@ const RegisterForm = () => {
 };
 
 const LoginFormToggle = () => {
-    const [isLoginForm, setIsLoginForm] = useState(true);
-  
-    const toggleForm = () => {
-      setIsLoginForm(!isLoginForm);
-    };
-  
-    return (
-      <><Box mt={"40px"}>
-        <Button
-        mt={'40px'}
-          onClick={toggleForm}
-          mb="20px"
-          color={isLoginForm ? 'white' : 'black'}
-          mr="10px"
-          bg={isLoginForm ? '#068181' : 'gray.300'}
-        >
-          {isLoginForm ? 'Register' : 'Login'}
-        </Button>
-        <Button
-          mt={'40px'}
-          onClick={toggleForm}
-          bg={isLoginForm ? 'gray.300' : '#068181'}
-          mb="20px"
-          color={isLoginForm ? 'black' : 'white'}
-          variant={isLoginForm ? 'outline' : 'solid'}
-        >
-          {isLoginForm ? 'Login' : 'Register'}
-        </Button>
-        {isLoginForm ? <LoginForm /> : <RegisterForm />}
-      </Box><Footer /></>
-    );
+  const [isLoginForm, setIsLoginForm] = useState(true);
+
+  const toggleForm = () => {
+    setIsLoginForm(!isLoginForm);
   };
-  
+
+  return (
+    <><Box mt={"40px"}>
+      <Button
+        mt={'40px'}
+        onClick={toggleForm}
+        mb="20px"
+        color={isLoginForm ? 'white' : 'black'}
+        mr="10px"
+        bg={isLoginForm ? '#068181' : 'gray.300'}
+      >
+        {isLoginForm ? 'Register' : 'Login'}
+      </Button>
+      <Button
+        mt={'40px'}
+        onClick={toggleForm}
+        bg={isLoginForm ? 'gray.300' : '#068181'}
+        mb="20px"
+        color={isLoginForm ? 'black' : 'white'}
+        variant={isLoginForm ? 'outline' : 'solid'}
+      >
+        {isLoginForm ? 'Login' : 'Register'}
+      </Button>
+      {isLoginForm ? <LoginForm /> : <RegisterForm />}
+    </Box><Footer /></>
+  );
+};
+
 
 export default LoginFormToggle;
