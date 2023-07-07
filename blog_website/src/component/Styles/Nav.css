@@ -1,6 +1,6 @@
 .navbar {
-    display: flex;
-    justify-content: center;
+   
+    justify-content: space-around;
     gap: 60px;
     padding: 15px;
     background-color: #068181;
@@ -12,4 +12,35 @@
     left: 0;
     right: 0;
     z-index: 9999; /* Adjust the z-index value as needed */
+  }
+  .navbar>div a:hover{
+    background-color: #045757 ;
+    border-radius: 5px;
+    transition: transform 0.5s ease-in-out;
+  }
+  .navbar>div a{
+    padding:5px  10px;
+  }
+  
+  .navbarTwo{
+    justify-content: space-around;
+    padding: 5px 0px;
+    background-color: #068181;
+    color: white;
+    font-weight: 700;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+  }
+  .navbarTwo>div a:hover{
+    background-color: #045757 ;
+    border-radius: 5px;
+    transition: transform 0.5s ease-in-out;
+  }
+  .navbarTwo>div a{
+    padding:5px  10px;
+    font-size: x-small;
   }

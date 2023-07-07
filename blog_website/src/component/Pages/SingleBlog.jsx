@@ -5,6 +5,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { singleBlogObj } from '../Redux/api';
 import {useParams} from 'react-router-dom'
 import { Footer } from './Footer';
+import '../Styles/combine.css'
 export const SingleBlog = () => {
   const dispatch=useDispatch()
 
@@ -16,15 +17,16 @@ console.log(id)
   })
     useEffect(()=>{
         dispatch(singleBlogObj(id))
+        window.scrollTo(0, 0);
     },[id])
 
 
   return (
-    <><Box>
-      <Card maxW='90%' size='lg' key={single._id} m={' 3% auto'} bgSize='cover' p={'10px 30px'} borderRadius={'10px'} bgImage="url('https://media.istockphoto.com/id/841983900/photo/defocused-soft-abstract-background.jpg?s=612x612&w=0&k=20&c=W763Um5zlZ75T4aLYyr45IfUlmtXlVk7g8hSfbsJ_Hc=')">
+    <><Box mt={"80px"}>
+      <Card  className='single_Blog_card'   key={single._id} bgImage="url('https://media.istockphoto.com/id/841983900/photo/defocused-soft-abstract-background.jpg?s=612x612&w=0&k=20&c=W763Um5zlZ75T4aLYyr45IfUlmtXlVk7g8hSfbsJ_Hc=')">
         <CardHeader>
           <Flex spacing='4'>
-            <Flex flex='1' gap='20' alignItems='center' flexWrap='wrap'>
+            <Flex flex='1' gap={['5','','','20']} alignItems='center' flexWrap='wrap'>
               <Avatar name={single.title} src={single.title} />
 
               <Flex gap={4}>
@@ -43,7 +45,7 @@ console.log(id)
           flexWrap='wrap'
           sx={{
             '& > button': {
-              minW: '106px'
+              minW: ['40px','','','106px']
             }
           }}
         >
@@ -61,6 +63,7 @@ console.log(id)
       </Card>
 
     </Box>
-    <Footer /></>
+   
+    </>
   )
 }

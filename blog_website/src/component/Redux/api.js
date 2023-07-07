@@ -4,12 +4,12 @@ import { blogObj, delData, homeBlogsArray, setLoading, storeData, whoLogin } fro
 export const fetchData = () => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
     try {
-         await axios.get('http://localhost:5000/blog/dashboard', {
+        await axios.get('https://tired-cormorant.cyclic.app/dashboard', {
             headers: {
                 Authorization: 'Bearer ' + token,
                 'Content-Type': 'application/json'
             }
-        }).then(({data})=>{
+        }).then(({ data }) => {
             dispatch(storeData(data.blogList))
         })
     } catch (error) {
@@ -17,16 +17,22 @@ export const fetchData = () => async (dispatch) => {
     }
 };
 
-export const homeBlogs = () => async (dispatch) => {
+export const homeBlogs = (pageNo) => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
+    let url = 'https://tired-cormorant.cyclic.app/blog'
+
+    if (pageNo) {
+        url += `?page=${pageNo}`
+    }
     try {
-         await axios.get('http://localhost:5000/blog', {
+        await axios.get(url, {
             headers: {
                 Authorization: 'Bearer ' + token,
                 'Content-Type': 'application/json'
             }
         }).then(({ data }) => {
             dispatch(homeBlogsArray(data.blogList))
+            console.log(data.blogList)
         })
     } catch (error) {
 
@@ -51,7 +57,7 @@ export const signUpUser = async (user) => {
 export const postBlog = (blog) => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
     try {
-        await axios.post(`http://localhost:5000/blog/create`, blog, {
+        await axios.post(`https://tired-cormorant.cyclic.app/create`, blog, {
             headers: {
                 "Authorization": "Bearer " + token,
                 'Content-Type': 'application/json'
@@ -63,14 +69,14 @@ export const postBlog = (blog) => async (dispatch) => {
     }
 }
 export const loginUser = (loginDetails) => async (dispatch) => {
-    
+
     try {
         await axios.post(`http://localhost:5000/user/login`, loginDetails, {
             headers: {
                 'Content-Type': 'application/json'
             }
         }).then(({ data }) => {
-          
+
             localStorage.setItem('token', JSON.stringify(data.token));
             localStorage.setItem('who', JSON.stringify(loginDetails.email));
             dispatch(whoLogin(loginDetails.email))
@@ -84,28 +90,28 @@ export const loginUser = (loginDetails) => async (dispatch) => {
     }
 }
 
-export const logOut=()=> async (dispatch)=>{
-try {
-    axios.post(`http://localhost:5000/user/logout`,{
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then(({data})=>{
-      
-        localStorage.setItem('token', JSON.stringify(data.token));
-        dispatch(whoLogin(""))
-        // dispatch(fetchData());
-    })
-} catch (error) {
-    
-}
+export const logOut = () => async (dispatch) => {
+    try {
+        axios.post(`http://localhost:5000/user/logout`, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(({ data }) => {
+
+            localStorage.setItem('token', JSON.stringify(data.token));
+            dispatch(whoLogin(""))
+            // dispatch(fetchData());
+        })
+    } catch (error) {
+
+    }
 }
 
-export const handleDeleteEmployee = (id) => async(dispatch)=> {
+export const handleDeleteEmployee = (id) => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
 
     try {
-        await axios.delete(`http://localhost:5000/blog/delete/${id}`, {
+        await axios.delete(`https://tired-cormorant.cyclic.app/delete/${id}`, {
             headers: {
                 "Authorization": "Bearer " + token,
                 'Content-Type': 'application/json'
@@ -120,32 +126,32 @@ export const handleDeleteEmployee = (id) => async(dispatch)=> {
     }
 };
 
-export const updateBlogObj = (id, obj,token) => async (dispatch) => {
-  
-    try {
-      await axios.patch(`http://localhost:5000/blog/edit/${id}`, obj, {
-        headers: {
-          Authorization: 'Bearer ' + token,
-          'Content-Type': 'application/json',
-        },
-      });
-      alert('Updated successfully');
-      dispatch(fetchData());
-    } catch (error) {
-      alert('Error occurred');
-      console.log('Error:', error);
-    }
-  };
+export const updateBlogObj = (id, obj, token) => async (dispatch) => {
 
-  export const singleBlogObj=(id)=> async (dispatch)=>{
+    try {
+        await axios.patch(`https://tired-cormorant.cyclic.app/edit/${id}`, obj, {
+            headers: {
+                Authorization: 'Bearer ' + token,
+                'Content-Type': 'application/json',
+            },
+        });
+        alert('Updated successfully');
+        dispatch(fetchData());
+    } catch (error) {
+        alert('Error occurred');
+        console.log('Error:', error);
+    }
+};
+
+export const singleBlogObj = (id) => async (dispatch) => {
     console.log(id)
-try {
-    axios.get(`http://localhost:5000/blog/single/${id}`).then(({data})=>{
-        console.log(data)
-        dispatch(blogObj(data.single))
-    })
-} catch (error) {
-    console.log(error)
+    try {
+        axios.get(`https://tired-cormorant.cyclic.app/single/${id}`).then(({ data }) => {
+            console.log(data)
+            dispatch(blogObj(data.single))
+        })
+    } catch (error) {
+        console.log(error)
+    }
 }
-  }
-  
+

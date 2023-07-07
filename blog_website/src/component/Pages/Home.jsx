@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, Avatar, Heading, Text, Spinner } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux'
 import { homeBlogs } from '../Redux/api';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../Styles/home.css'
 import { SectionOne } from './SectionOne';
 import { SectionTwo } from './SectionTwo';
@@ -22,25 +22,32 @@ export const Home = () => {
     const createdAtDate = new Date(createdAt);
     const timeDifference = currentDate.getTime() - createdAtDate.getTime();
     const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    if(daysAgo === 0){
+    if (daysAgo === 0) {
       return "Today"
     }
-    return `${daysAgo} days ago`;
+    return `${daysAgo} days ago`
   }
+  let currePage=1
+const [pageNo,setPageNo]=useState(currePage)
 
   useEffect(() => {
-    dispatch(homeBlogs())
-    window.scrollTo(0, 0);
+    dispatch(homeBlogs(pageNo))
+   
     setLoading(false)
 
-  }, [])
+  }, [pageNo])
 
+
+  const handlePage=(payload)=>{
+      setPageNo((prev)=>parseInt(prev+payload))
+   
+  }
   return (
 
     <><><><SectionOne />
       <SectionTwo />
 
-      <Box className='home_Container'  m={'20px'}>
+      <Box className='home_Container' m={'20px'}>
         <Heading bgColor={'#068181'} color={'white'} p={'5px'} size={'md'}> Public Blogs</Heading>
         {loading ? (<Box margin={"8% auto"}>
           <Spinner m={"auto"} size='xl' color='blue.500' thickness='2px' emptyColor='gray.200' />
@@ -59,12 +66,12 @@ export const Home = () => {
                   </CardHeader>
 
                   <CardBody w={"70%"} m={"4% auto 0% auto"} borderRadius={"10px"}>
-                    <Text textAlign='center'>{content.split(' ').slice(0, 10).join(' ')}. . . 
-                     <Link ml={"5px"}  to={`/singleBlog/${_id}`} style={{color:'#3182ce',fontWeight:'700'}} >
-                      read more
-                    </Link></Text>
+                    <Text textAlign='center'>{content.split(' ').slice(0, 10).join(' ')}. . .
+                      <Link ml={"5px"} to={`/singleBlog/${_id}`} style={{ color: '#3182ce', fontWeight: '700' }} >
+                        read more
+                      </Link></Text>
                     <Text textAlign={'center'} fontSize={'small'} color={'gray'} mt={'10px'}>posted : {getDaysAgo(createdAt)}</Text>
-                   
+
                   </CardBody>
 
                   <CardFooter
@@ -87,6 +94,12 @@ export const Home = () => {
                 </Card>
               ))}
           </Box>)}
+
+        <Flex  w={['55%','','20%','15%']} m={'auto'} alignItems={'center'} justifyContent={'space-between'}>
+          <Button variant={'outline'} size={'sm'} isDisabled={pageNo === 1} onClick={()=>handlePage(-1)} >Prev</Button>
+          <Button  size={'sm'}>{pageNo}</Button>
+          <Button variant={'outline'}  size={'sm'} isDisabled={homeBlogArray.length < 3} onClick={()=>handlePage(1)} onCLick>Next</Button>
+        </Flex>
 
       </Box>
     </><SectionThree />

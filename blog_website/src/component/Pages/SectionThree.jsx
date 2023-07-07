@@ -4,30 +4,30 @@ import  '../Styles/combine.css'
 
 
 const Card = ({ head, content, src, sub }) => {
-    return <Flex className='SecThree_fst' flex={"wrap"}>
-        <Box className='sec_three_left' w={"40%"} p={"20px "} >
-            <Image className='sec_three_img' borderRadius={"10px"} height={"95%"} src={src} />
-        </Box>
-        <Box w={["60%"]} className='sec_three_right' p={"20px "} >
-            <Box h={"100%"} border={'1px solid'}>
-                <Heading ml={"20px"} textAlign={'start'} size={'lg'}> {head}</Heading>
-                <Heading ml={"20px"} textAlign={'start'} size={'md'}> {sub} </Heading>
-                <Text m={" 0px 20px"} textAlign={"center"} mt={'20px'}>{content} </Text>
-            </Box>
-        </Box>
-    </Flex>
+    return <Flex direction={["column", "row"]} className='SecThree_fst'>
+    <Box className='sec_three_left' w={["100%", "40%"]} p={["20px", "20px"]} >
+      <Image className='sec_three_img' borderRadius={"10px"} height={"95%"} src={src} />
+    </Box>
+    <Box w={["100%", "60%"]} className='sec_three_right' p={["20px", "20px"]} >
+      <Box h={"100%"} border={'1px solid'}>
+        <Heading ml={"20px"} textAlign={'start'} size={'lg'}> {head}</Heading>
+        <Heading ml={"20px"} textAlign={'start'} size={'md'}> {sub} </Heading>
+        <Text m={" 0px 20px"} textAlign={"start"} mt={'20px'}>{content} </Text>
+      </Box>
+    </Box>
+  </Flex>
 }
 const RevCard = ({ head, content, src, sub }) => {
-    return <Flex bgColor={'#1a202c'} color={'white'} className='SecThree_fst' flex={"wrap"}>
+    return <Flex bgColor={'#1a202c'} direction={["column", "row"]}  color={'white'}  className='SecThree_fst' >
 
-        <Box w={"60%"} className='sec_three_right' p={"20px "} >
-            <Box h={"100%"} border={'1px solid gray'}>
+        <Box w={["100%","60%"]} className='sec_three_right' p={"20px "} >
+            <Box h={"100%"} w={['100%','','','',]} border={'1px solid gray'}>
                 <Heading ml={"20px"} textAlign={'start'} size={'lg'}> {head}</Heading>
                 <Heading ml={"20px"} mt={'5px'} textAlign={'start'} size={'md'}> {sub} </Heading>
-                <Text m={" 0px 20px"} textAlign={"center"} mt={'20px'}>{content} </Text>
+                <Text m={" 10px 20px"} textAlign={"start"} mt={'20px'}>{content} </Text>
             </Box>
         </Box>
-        <Box className='sec_three_left' w={"40%"} p={"20px "} >
+        <Box className='sec_three_left' w={["100%","","45%","40%"]} p={"20px "} >
             <Image className='sec_three_img' borderRadius={"10px"} height={"90%"} src={src} />
         </Box>
     </Flex>

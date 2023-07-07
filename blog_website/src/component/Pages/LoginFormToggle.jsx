@@ -35,7 +35,7 @@ const LoginForm = () => {
 
 
   return (
-    <Box w={'30%'} m={'auto'} mx="auto" p="20px" >
+    <Box w={['100%','','','30%']} m={'auto'} mx="auto" p="20px" >
       <form id="login_form" onSubmit={handleLoginSubmit}>
         <Stack spacing="20px">
           <FormControl>
@@ -92,7 +92,7 @@ const RegisterForm = () => {
 
 
   return (
-    <Box w={'30%'} m={'auto'} mx="auto" p="20px">
+    <Box w={['100%','','','30%']} m={'auto'} mx="auto" p="20px">
       <form id='signUp_form' onSubmit={handleRegisterSubmit}>
         <Stack spacing="10px">
         <FormControl>

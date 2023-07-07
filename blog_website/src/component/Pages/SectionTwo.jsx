@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 
 export const SectionTwo = () => {
   return (
-    <Box m={'20px'}  p={'30px 10px'}>
+    <Box m={'20px'}  p={'30px 10px'} mt={["70%","","0px","0px"]}>
        <Heading bgColor={'#068181'} color={'white'} p={'5px'} size={'md'}>Blog Categories</Heading>
     <Flex mt={'30px'}  gap="20px" justifyContent="center"  flexWrap="wrap">
       <Card src='https://media.self.com/photos/5f0885ffef7a10ffa6640daa/4:3/w_5240,h_3929,c_limit/travel_plane_corona.jpeg' title="Travel" content='Delve into captivating stories, insightful perspectives, and valuable insights as our blog takes you on a thought-provoking and informative journey.' link='https://www.ourbetterworld.org/story/giving-guide-experiences-retreats?gclid=CjwKCAjwzJmlBhBBEiwAEJyLu9W9qNGByPpbKJIogD15olq2ljjgTxlvzPicwklK25_WKpvacajltRoCZFUQAvD_BwE'/>

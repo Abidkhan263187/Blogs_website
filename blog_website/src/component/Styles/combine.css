@@ -1,18 +1,22 @@
-.create_blog{
-    border :1px solid #068181;
+.create_blog {
+    border: 1px solid #068181;
     padding: 30px 60px;
     border-radius: 10px;
+    margin: 10% auto 0 auto;
 }
-.create_blog input{
+
+.create_blog input {
     margin: 5px 0px;
     border-color: gray;
 }
-.create_blog textarea{
+
+.create_blog textarea {
     border-color: gray;
 }
-.create_blog button{
+
+.create_blog button {
     margin: 30px 0px 0px 0px;
-    background-color:  #068181;
+    background-color: #068181;
     color: white;
     font-weight: 700;
     width: 30%;
@@ -20,11 +24,61 @@
 
 
 /* section three  */
-.sec_three_img{
+.sec_three_img {
     transform: Scale(.97);
     transition: transform 0.3s ease-in-out;
-    
+
 }
-.sec_three_img:hover{
+
+
+.sec_three_img:hover {
     transform: Scale(1);
+}
+
+
+/* single blog card  */
+.single_Blog_card {
+    size: large;
+    margin: 3% auto;
+    background-size: cover;
+    padding: 10px 30px;
+    border-radius: 10px;
+    max-width:90%
+}
+
+
+@media (max-width: 767px) {
+    /* CSS properties for small screens */
+
+    .create_blog {
+        border: 1px solid #068181;
+        margin-top: 100px;
+        padding: 30px 60px;
+        border-radius: 10px;
+    }
+
+    .create_blog button {
+
+        width: 50%;
+    }
+    .single_Blog_card {
+        size: large;
+        margin: 3% auto 15% auto;
+        background-size: cover;
+        padding: 10px 30px;
+        border-radius: 10px;
+        max-width:90%
+    }
+   
+
+}
+
+/* Styles for medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* CSS properties for medium screens */
+}
+
+/* Styles for large screens */
+@media (min-width: 1024px) {
+    /* CSS properties for large screens */
 }

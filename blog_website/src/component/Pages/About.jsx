@@ -13,8 +13,8 @@ export const About = () => {
   ];
 
   return (
-    <><Box p={4}>
-      <Heading as="h1" mb={4} textAlign="center">
+    <><Box p={4} >
+      <Heading  mt={['40px','','','40px']} as="h1" mb={4} textAlign="center">
         About Us
       </Heading>
 
