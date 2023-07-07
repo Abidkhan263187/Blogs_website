@@ -42,7 +42,7 @@ export const homeBlogs = (pageNo) => async (dispatch) => {
 
 export const signUpUser = async (user) => {
     try {
-        await axios.post(`http://localhost:5000/user/signup`, user, {
+        await axios.post(`https://tired-cormorant.cyclic.app/user/signup`, user, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -71,7 +71,7 @@ export const postBlog = (blog) => async (dispatch) => {
 export const loginUser = (loginDetails) => async (dispatch) => {
 
     try {
-        await axios.post(`http://localhost:5000/user/login`, loginDetails, {
+        await axios.post(`https://tired-cormorant.cyclic.app/user/login`, loginDetails, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -92,7 +92,7 @@ export const loginUser = (loginDetails) => async (dispatch) => {
 
 export const logOut = () => async (dispatch) => {
     try {
-        axios.post(`http://localhost:5000/user/logout`, {
+        axios.post(`https://tired-cormorant.cyclic.app/user/logout`, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -152,7 +152,7 @@ export const singleBlogObj = (id) => async (dispatch) => {
         })
     } catch (error) {
         console.log(error)
-        
+
     }
 }
 
