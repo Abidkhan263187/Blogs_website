@@ -47,7 +47,7 @@ export const DashBoard = () => {
     setEditID(id)
   }
 
-  const handleClose = () => setIsOpen(false);
+ 
 
   const [Loading, setLoad] = useState(true)
   const token = JSON.parse(localStorage.getItem('token'));
@@ -110,10 +110,10 @@ console.log(pageNo)
   }, [token, Loading, searchParams,pageNo]);
 
   const handleUpdate = () => {
-
     dispatch(updateBlogObj(editID, updateBlog, token))
     getData()
     setLoad(!Loading)
+    setIsOpen(false)
   }
 
 
@@ -221,7 +221,7 @@ console.log(pageNo)
               </CardFooter>
 
             </Card>
-              <Modal isOpen={isOpen} onClose={handleClose}>
+              <Modal isOpen={isOpen} onClose={!isOpen}>
                 <ModalOverlay />
                 <ModalContent>
                   <ModalHeader>Update your Blog</ModalHeader>
@@ -231,7 +231,7 @@ console.log(pageNo)
                     <FormControl>
                       <FormLabel>Title</FormLabel>
                       <Input
-                        value={updateBlog.title}
+                        
                         name='title'
                         onChange={(e) => setUpdateBlog({ ...updateBlog, [e.target.name]: e.target.value })}
                         placeholder="Enter title" />
@@ -239,7 +239,7 @@ console.log(pageNo)
                     <FormControl>
                       <FormLabel>Type</FormLabel>
                       <Input
-                        value={updateBlog.type}
+                        
                         name='type'
                         onChange={(e) => setUpdateBlog({ ...updateBlog, [e.target.name]: e.target.value })}
                         placeholder="Enter type" />
@@ -248,7 +248,7 @@ console.log(pageNo)
                     <FormControl mt={4}>
                       <FormLabel>Content</FormLabel>
                       <Textarea
-                        value={updateBlog.content}
+                      
                         name='content'
                         onChange={(e) => setUpdateBlog({ ...updateBlog, [e.target.name]: e.target.value })}
                         placeholder="Enter content" />

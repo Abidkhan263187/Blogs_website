@@ -57,7 +57,7 @@ export const signUpUser = async (user) => {
 export const postBlog = (blog) => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
     try {
-        await axios.post(`https://tired-cormorant.cyclic.app/create`, blog, {
+        await axios.post(`https://tired-cormorant.cyclic.app/blog/create`, blog, {
             headers: {
                 "Authorization": "Bearer " + token,
                 'Content-Type': 'application/json'
@@ -111,7 +111,7 @@ export const handleDeleteEmployee = (id) => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
 
     try {
-        await axios.delete(`https://tired-cormorant.cyclic.app/delete/${id}`, {
+        await axios.delete(`https://tired-cormorant.cyclic.app/blog/delete/${id}`, {
             headers: {
                 "Authorization": "Bearer " + token,
                 'Content-Type': 'application/json'
@@ -129,14 +129,15 @@ export const handleDeleteEmployee = (id) => async (dispatch) => {
 export const updateBlogObj = (id, obj, token) => async (dispatch) => {
 
     try {
-        await axios.patch(`https://tired-cormorant.cyclic.app/edit/${id}`, obj, {
+        await axios.patch(`https://tired-cormorant.cyclic.app/blog/edit/${id}`, obj, {
             headers: {
                 Authorization: 'Bearer ' + token,
                 'Content-Type': 'application/json',
             },
         });
-        alert('Updated successfully');
-        dispatch(fetchData());
+        
+        // dispatch(fetchData());
+        // alert('Updated successfully');
     } catch (error) {
         alert('Error occurred');
         console.log('Error:', error);
