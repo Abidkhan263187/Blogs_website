@@ -17,7 +17,7 @@ export const AllRoutes = () => {
         <Box>
             <Routes>
                 <Route path={'/'} element={<Home />} />
-                <Route path={'/dashboard'} element={<DashBoard />} />
+                <Route path={'/dashboard'} element={login ? <DashBoard />:<Navigate to={'/reg'} />} />
                 <Route path={'/about'} element={<About />} />
                 <Route path={'/reg'} element={login ?<Home/> :<LoginFormToggle />} />
                 <Route path={'/create'} element={login? <CreateBlogs />:<Navigate to={'/reg'}/>} />

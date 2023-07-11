@@ -51,21 +51,24 @@ export const DashBoard = () => {
 
   const [Loading, setLoad] = useState(true)
   const token = JSON.parse(localStorage.getItem('token'));
-  // const { blogArray, load } = useSelector((store) => {
-  //   return store
-  // })
+  const { login } = useSelector((store) => {
+    return store
+  })
   let currePage=1
   const [pageNo,setPageNo]=useState(currePage)
 
+  
   const [array, setArray] = useState([])
-  const getData = async (pageNo) => {
+
+    const getData = async (pageNo) => {
+    
     const type = searchParams.get('type');
     const sortby = searchParams.get('sortby');
     const order = searchParams.get('order');
-    let url = 'https://tired-cormorant.cyclic.app/blog/dashboard';
-console.log(pageNo)
-      
 
+    let url = 'https://tired-cormorant.cyclic.app/blog/dashboard';
+    
+    
     if (type !== null && type !== '') {
       url += `?type=${type}`;
     }
@@ -105,7 +108,7 @@ console.log(pageNo)
 
   useEffect(() => {
     getData(pageNo);
-    setLoad(false);
+   
     window.scrollTo(0, 0);
   }, [token, Loading, searchParams,pageNo]);
 
@@ -264,7 +267,11 @@ console.log(pageNo)
                 </ModalContent>
               </Modal></>
 
-          )) : <Box > <Heading size={"lg"} >  {token === '' ? "Please Login !" : 'no blogs created !'}</Heading> </Box>
+          )) : <Box > <Heading size={"lg"} >  {token === '' ? "Please Login !" : Loading === false ? 'no blogs created !' :<Box margin={"5% auto"}>
+          <Spinner m={"auto"} size='xl' color='blue.500' thickness='2px' emptyColor='gray.200' />
+          <Heading mt={'10px'} size={"lg"}> Please wait ....</Heading>
+  
+        </Box>}</Heading> </Box>
           }
 
         </Box>)}
