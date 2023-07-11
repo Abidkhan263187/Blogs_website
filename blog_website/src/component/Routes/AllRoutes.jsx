@@ -13,11 +13,12 @@ export const AllRoutes = () => {
     const {login}=useSelector((store)=>{
         return store
       })
+      const token= JSON.parse(localStorage.getItem('token'))
     return (
         <Box>
             <Routes>
                 <Route path={'/'} element={<Home />} />
-                <Route path={'/dashboard'} element={login ? <DashBoard />:<Navigate to={'/reg'} />} />
+                <Route path={'/dashboard'} element={login || token ? <DashBoard />:<Navigate to={'/reg'} />} />
                 <Route path={'/about'} element={<About />} />
                 <Route path={'/reg'} element={login ?<Home/> :<LoginFormToggle />} />
                 <Route path={'/create'} element={login? <CreateBlogs />:<Navigate to={'/reg'}/>} />

@@ -33,7 +33,7 @@ export const homeBlogs = (pageNo) => async (dispatch) => {
             }
         }).then(({ data }) => {
             dispatch(homeBlogsArray(data.blogList))
-            console.log(data.blogList)
+           
         })
     } catch (error) {
 
@@ -127,7 +127,7 @@ export const handleDeleteEmployee = (id) => async (dispatch) => {
                 'Content-Type': 'application/json'
             }
         }).then(({ data }) => {
-            console.log(data);
+           
         })
         // dispatch(fetchData());
         console.log("deleted")
