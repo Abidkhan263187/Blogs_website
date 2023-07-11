@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { blogObj, delData, homeBlogsArray, setLoading, storeData, whoLogin } from './action';
+import { blogObj, delData, homeBlogsArray, login, login_load, setLoading, storeData, whoLogin } from './action';
+import { Navigate } from 'react-router-dom';
 
 export const fetchData = () => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
@@ -69,7 +70,7 @@ export const postBlog = (blog) => async (dispatch) => {
     }
 }
 export const loginUser = (loginDetails) => async (dispatch) => {
-
+    dispatch(login_load(true))
     try {
         await axios.post(`https://tired-cormorant.cyclic.app/user/login`, loginDetails, {
             headers: {
@@ -80,12 +81,20 @@ export const loginUser = (loginDetails) => async (dispatch) => {
             localStorage.setItem('token', JSON.stringify(data.token));
             localStorage.setItem('who', JSON.stringify(loginDetails.email));
             dispatch(whoLogin(loginDetails.email))
+            dispatch(login(true))
+            dispatch(login_load(false))
+           
+
             // dispatch(fetchData());
             // dispatch(setLoading(true));
         })
 
     } catch (error) {
+        dispatch(login(false))
         alert("login failed")
+        dispatch(login_load(false))
+       
+
         console.log("error while login", error)
     }
 }
@@ -100,6 +109,7 @@ export const logOut = () => async (dispatch) => {
 
             localStorage.setItem('token', JSON.stringify(data.token));
             dispatch(whoLogin(""))
+            dispatch(login(false))
             // dispatch(fetchData());
         })
     } catch (error) {
@@ -135,7 +145,7 @@ export const updateBlogObj = (id, obj, token) => async (dispatch) => {
                 'Content-Type': 'application/json',
             },
         });
-        
+
         // dispatch(fetchData());
         // alert('Updated successfully');
     } catch (error) {

@@ -5,6 +5,6 @@ export const store= createStore(reducer,applyMiddleware(thunk))
 
 
 store.subscribe(()=>{
-    console.log(store.getState().load)
+    console.log(store.getState().login)
   
 })

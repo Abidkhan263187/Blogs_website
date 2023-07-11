@@ -1,4 +1,4 @@
-import { BLOG_ID, DELOLD, HOME_BLOG_ARRAY, LOAD, SINGLE_BLOG, STORE_DATA, WHO } from "./actionTypes"
+import { BLOG_ID, DELOLD, HOME_BLOG_ARRAY, LOAD, LOGIN, LOGIN_LOAD, LOGN, SINGLE_BLOG, STORE_DATA, WHO } from "./actionTypes"
 
 export const storeData = (payload) => {
    return {
@@ -44,3 +44,15 @@ export const blogObj=(payload)=>{
 }
 
 
+export const login=(payload)=>{
+   return {
+   type:LOGIN,
+   payload
+   }
+}
+export const login_load=(payload)=>{
+   return{
+      type:LOGIN_LOAD,
+      payload
+   }
+}

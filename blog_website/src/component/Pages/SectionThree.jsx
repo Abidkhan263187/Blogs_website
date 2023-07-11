@@ -9,7 +9,7 @@ const Card = ({ head, content, src, sub }) => {
       <Image className='sec_three_img' borderRadius={"10px"} height={"95%"} src={src} />
     </Box>
     <Box w={["100%", "60%"]} className='sec_three_right' p={["20px", "20px"]} >
-      <Box h={"100%"} border={'1px solid'}>
+      <Box h={"100%"} border={'1px solid'}  pt={'1%'}>
         <Heading ml={"20px"} textAlign={'start'} size={'lg'}> {head}</Heading>
         <Heading ml={"20px"} textAlign={'start'} size={'md'}> {sub} </Heading>
         <Text m={" 0px 20px"} textAlign={"start"} mt={'20px'}>{content} </Text>
@@ -21,7 +21,7 @@ const RevCard = ({ head, content, src, sub }) => {
     return <Flex bgColor={'#1a202c'} direction={["column", "row"]}  color={'white'}  className='SecThree_fst' >
 
         <Box w={["100%","60%"]} className='sec_three_right' p={"20px "} >
-            <Box h={"100%"} w={['100%','','','',]} border={'1px solid gray'}>
+            <Box h={"100%"} w={['100%','','','',]} pt={'1%'} border={'1px solid gray'}>
                 <Heading ml={"20px"} textAlign={'start'} size={'lg'}> {head}</Heading>
                 <Heading ml={"20px"} mt={'5px'} textAlign={'start'} size={'md'}> {sub} </Heading>
                 <Text m={" 10px 20px"} textAlign={"start"} mt={'20px'}>{content} </Text>

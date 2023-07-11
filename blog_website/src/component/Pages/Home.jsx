@@ -12,7 +12,7 @@ import { blogID } from '../Redux/action';
 import { useSearchParams } from 'react-router-dom';
 export const Home = () => {
   // const [homeArray, setHomeArray] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch()
   const { homeBlogArray } = useSelector((store) => {
     return store
@@ -31,11 +31,11 @@ export const Home = () => {
 const [pageNo,setPageNo]=useState(currePage)
 
   useEffect(() => {
+    setLoading(true)
     dispatch(homeBlogs(pageNo))
-   
     setLoading(false)
 
-  }, [pageNo])
+  }, [pageNo,loading])
 
 
   const handlePage=(payload)=>{
