@@ -108,6 +108,7 @@ export const logOut = () => async (dispatch) => {
         }).then(({ data }) => {
 
             localStorage.setItem('token', JSON.stringify(data.token));
+            localStorage.setItem('who', JSON.stringify(""));
             dispatch(whoLogin(""))
             dispatch(login(false))
             // dispatch(fetchData());

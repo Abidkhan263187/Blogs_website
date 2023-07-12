@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
   const { who } = useSelector((store) => store);
+  const whois=JSON.parse(localStorage.getItem('who'))
 
   const navigate = useNavigate();
 
@@ -35,7 +36,7 @@ export const Navbar = () => {
           <Box><Link to={'/about'}>About</Link></Box>
           <Box><Link to={'/reg'}>Register</Link></Box>
         </Flex>
-        {who && (
+        {who || whois && (
           <Box ml={'80px'}>
             <Button onClick={handleLogout} color={'white'} bg={'transparent'} size={'sm'} _hover={{ bg: 'transparent' }}>Logout</Button>
             (<Link to={'#'}>{username}</Link>)
