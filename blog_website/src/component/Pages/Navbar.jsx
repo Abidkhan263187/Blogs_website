@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
   const { who } = useSelector((store) => store);
-  const whois=JSON.parse(localStorage.getItem('who'))
+  const localWho = JSON.parse(localStorage.getItem('who'))
 
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ export const Navbar = () => {
     return atIndex !== -1 ? email.slice(0, atIndex) : email;
   };
 
-  const username = getUsername(who);
+  const username = getUsername(localWho);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -36,7 +36,7 @@ export const Navbar = () => {
           <Box><Link to={'/about'}>About</Link></Box>
           <Box><Link to={'/reg'}>Register</Link></Box>
         </Flex>
-        {who || whois && (
+        {who && (
           <Box ml={'80px'}>
             <Button onClick={handleLogout} color={'white'} bg={'transparent'} size={'sm'} _hover={{ bg: 'transparent' }}>Logout</Button>
             (<Link to={'#'}>{username}</Link>)
@@ -53,7 +53,8 @@ export const Navbar = () => {
           <Box><Link to={'/about'}>About</Link></Box>
           <Box><Link to={'/reg'}>Register</Link></Box>
         </Flex>
-        {who && (
+        {console.log(localWho)}
+        {localWho !== '' && (
           <Box>
             <Button onClick={handleLogout} color={'white'} bg={'transparent'} size={'sm'} _hover={{ bg: 'transparent' }}>Logout</Button>
             (<Link to={'#'}>{username}</Link>)
