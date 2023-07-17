@@ -9,7 +9,7 @@ export const About = () => {
     'https://www.searchenginejournal.com/wp-content/uploads/2018/04/Gummisig-About-Us-Page.jpg',
     'https://www.masaischool.com/blog/content/images/wordpress/2021/11/Mihir-Kumar.jpeg',
     'https://www.masaischool.com/img/about/pillars.svg',
-    // Add more image URLs here
+    
   ];
 
   return (
