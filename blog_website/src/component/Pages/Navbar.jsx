@@ -8,12 +8,12 @@ import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
   const { who } = useSelector((store) => store);
-  const localWho = JSON.parse(localStorage.getItem('who'))
+  const localWho = JSON.parse(localStorage.getItem('who'))||''
 
   const navigate = useNavigate();
 
   const getUsername = (email) => {
-    const atIndex = email.indexOf('@');
+    let atIndex = email.indexOf('@');
     return atIndex !== -1 ? email.slice(0, atIndex) : email;
   };
 
