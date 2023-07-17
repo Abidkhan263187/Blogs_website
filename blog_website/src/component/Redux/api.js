@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { blogObj, delData, homeBlogsArray, login, login_load, setLoading, storeData, whoLogin } from './action';
-import { Navigate } from 'react-router-dom';
+import { blogObj, delData, homeBlogsArray, login, login_load, storeData, whoLogin } from './action';
+
 
 export const fetchData = () => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
@@ -159,7 +159,7 @@ export const singleBlogObj = (id) => async (dispatch) => {
     console.log(id)
     try {
         axios.get(`https://tired-cormorant.cyclic.app/blog/single/${id}`).then(({ data }) => {
-            console.log(data)
+          
             dispatch(blogObj(data.single))
         })
     } catch (error) {
