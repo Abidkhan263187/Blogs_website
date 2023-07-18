@@ -111,7 +111,7 @@ const RegisterForm = () => {
               name="name"
               isRequired
               placeholder="Enter your name"
-              value={registerData.confirmPassword}
+              value={registerData.name}
               onChange={handleRegisterChange}
             />
           </FormControl>
@@ -151,6 +151,7 @@ const LoginFormToggle = () => {
   const toggleForm = () => {
     setIsLoginForm(!isLoginForm);
   };
+  
   const {login_loading} = useSelector((store)=>{
     return store
   })
