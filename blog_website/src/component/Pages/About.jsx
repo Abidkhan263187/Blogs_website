@@ -85,8 +85,6 @@ export const About = () => {
           platform for insightful and informative blog content. We aim to foster a community
           where people can share their expertise, experiences, and ideas to inspire and educate others.
           Inspiring Creativity: We are dedicated to fostering creativity through our blog app.
-    
-
         </Text>
       </Box>
 
