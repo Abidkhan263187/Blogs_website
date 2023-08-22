@@ -8,14 +8,14 @@ export  const Footer = () => {
           Stay Connected
         </Text>
         <Flex mb={4}>
-          <Link href="#" mr={4}>
-            Facebook
+          <Link href="https://www.linkedin.com/in/abid-khan-325795182/" mr={4}>
+          <i class="fa-brands fa-linkedin fa-lg"></i>
           </Link>
-          <Link href="#" mr={4}>
-            Twitter
+          <Link href="https://github.com/Abidkhan263187" mr={4}>
+          <i class="fa-brands fa-github fa-lg"></i>
           </Link>
-          <Link href="#" mr={4}>
-            Instagram
+          <Link href="https://www.instagram.com/_abidkhann/" mr={4}>
+          <i class="fa-brands fa-instagram fa-lg"></i>
           </Link>
         </Flex>
         <Text fontSize="sm" mb={4}>

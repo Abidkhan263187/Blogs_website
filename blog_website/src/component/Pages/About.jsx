@@ -8,7 +8,7 @@ export const About = () => {
   const carouselImages = [
     'https://www.searchenginejournal.com/wp-content/uploads/2018/04/Gummisig-About-Us-Page.jpg',
     'https://www.masaischool.com/blog/content/images/wordpress/2021/11/Mihir-Kumar.jpeg',
-    'https://www.masaischool.com/img/about/pillars.svg',
+    'https://images.pexels.com/photos/262508/pexels-photo-262508.jpeg?cs=srgb&dl=pexels-pixabay-262508.jpg&fm=jpg',
     
   ];
 
