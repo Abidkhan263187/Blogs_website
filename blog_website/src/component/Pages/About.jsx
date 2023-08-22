@@ -75,7 +75,6 @@ export const About = () => {
           </Box>
         ))}
       </Carousel>
-
       <Box mt={8}>
         <Heading size="lg" textAlign="center" mb={4}>
           Our Mission
