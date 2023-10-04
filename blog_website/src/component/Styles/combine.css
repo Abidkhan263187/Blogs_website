@@ -56,6 +56,9 @@
         padding: 30px 60px;
         border-radius: 10px;
     }
+    .SecThree_fst{
+        width: 100%;
+    }
 
     .create_blog button {
 
@@ -67,7 +70,7 @@
         background-size: cover;
         padding: 10px 30px;
         border-radius: 10px;
-        max-width:90%
+        max-width:100%
     }
    
 

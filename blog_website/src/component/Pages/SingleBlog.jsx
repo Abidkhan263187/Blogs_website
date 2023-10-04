@@ -23,7 +23,7 @@ console.log(id)
 
   return (
     <><Box mt={"80px"}>
-      <Card  className='single_Blog_card'   key={single._id} bgImage="url('https://media.istockphoto.com/id/841983900/photo/defocused-soft-abstract-background.jpg?s=612x612&w=0&k=20&c=W763Um5zlZ75T4aLYyr45IfUlmtXlVk7g8hSfbsJ_Hc=')">
+      <Card  className='single_Blog_card'  key={single._id} bgImage="url('https://media.istockphoto.com/id/841983900/photo/defocused-soft-abstract-background.jpg?s=612x612&w=0&k=20&c=W763Um5zlZ75T4aLYyr45IfUlmtXlVk7g8hSfbsJ_Hc=')">
         <CardHeader>
           <Flex spacing='4'>
             <Flex flex='1' gap={['5','','','20']} alignItems='center' flexWrap='wrap'>

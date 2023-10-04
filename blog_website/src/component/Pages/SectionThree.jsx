@@ -4,7 +4,7 @@ import  '../Styles/combine.css'
 
 
 const Card = ({ head, content, src, sub }) => {
-    return <Flex direction={["column", "row"]} className='SecThree_fst'>
+    return <Flex direction={["column", "row"]}  className='SecThree_fst'>
     <Box className='sec_three_left' w={["100%", "40%"]} p={["20px", "20px"]} >
       <Image className='sec_three_img' borderRadius={"10px"} height={"95%"} src={src} />
     </Box>
@@ -18,7 +18,7 @@ const Card = ({ head, content, src, sub }) => {
   </Flex>
 }
 const RevCard = ({ head, content, src, sub }) => {
-    return <Flex bgColor={'#1a202c'} direction={["column", "row"]}  color={'white'}  className='SecThree_fst' >
+    return <Flex bgColor={'#1a202c'} borderRadius={'10px'} direction={["column", "row"]}  color={'white'}  className='SecThree_fst' >
 
         <Box w={["100%","60%"]} className='sec_three_right' p={"20px "} >
             <Box h={"100%"} w={['100%','','','',]} pt={'1%'} border={'1px solid gray'} borderRadius={"10px"}>
@@ -35,7 +35,7 @@ const RevCard = ({ head, content, src, sub }) => {
 
 export const SectionThree = () => {
     return (
-        <Box className='sectionThree_Container'  p={"20px"} m={'20px'}>
+        <Box className='sectionThree_Container'  p={["0px","20px"]} m={'20px'}>
             <Heading bgColor={'#068181'} color={'white'} p={'5px'} size={'md'} mb={'20px'}> All time Favroute </Heading>
 
             <Card head={'Living Life to the Fullest'} sub={'Nurturing a Life Filled with Optimism'} src={'https://www.timesonline.com/gcdn/authoring/2016/03/06/NBCT/ghows-PA-80bfcd7e-7372-4960-838f-3579f6e91d2c-83c4d428.jpeg?width=660&height=440&fit=crop&format=pjpg&auto=webp'} content={'Life is a beautiful journey, and a positive mindset acts as our compass, guiding us through challenging times and propelling us forward in moments of triumph. It empowers us to face adversity with resilience, to overcome obstacles with determination, and to learn valuable lessons from setbacks. With positivity as our foundation, we have the strength to keep pushing forward, knowing that every experience serves a purpose in our personal development.'} />

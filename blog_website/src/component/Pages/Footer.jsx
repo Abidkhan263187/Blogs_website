@@ -11,7 +11,7 @@ export  const Footer = () => {
           <Link href="https://www.linkedin.com/in/abid-khan-325795182/" mr={4}>
           <i class="fa-brands fa-linkedin fa-lg"></i>
           </Link>
-          <Link href="https://github.com/Abidkhan263187" mr={4}>
+          <Link href="#" mr={4}>
           <i class="fa-brands fa-github fa-lg"></i>
           </Link>
           <Link href="https://www.instagram.com/_abidkhann/" mr={4}>

@@ -53,7 +53,7 @@ const [pageNo,setPageNo]=useState(currePage)
           <Spinner m={"auto"} size='xl' color='blue.500' thickness='2px' emptyColor='gray.200' />
           <Heading mt={'10px'} size={"lg"}> Please wait ....</Heading>
         </Box>)
-          : (<Box flex className='home' mt={'20px'}>
+          : (<Box className='home' mt={'20px'}>
             {homeBlogArray &&
               homeBlogArray.map(({ title, type, content, _id, createdAt }) => (
                 <Card maxW='sm' m={'20px'} size='xs' key={_id} p={'10px 30px'} borderRadius={'10px'} bgImage="url('https://media.istockphoto.com/id/841983900/photo/defocused-soft-abstract-background.jpg?s=612x612&w=0&k=20&c=W763Um5zlZ75T4aLYyr45IfUlmtXlVk7g8hSfbsJ_Hc=')">

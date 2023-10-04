@@ -5,7 +5,7 @@ import { blogObj, delData, homeBlogsArray, login, login_load, storeData, whoLogi
 export const fetchData = () => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
     try {
-        await axios.get('https://tired-cormorant.cyclic.app/dashboard', {
+        await axios.get(`${process.env.REACT_APP_URL}/dashboard`, {
             headers: {
                 Authorization: 'Bearer ' + token,
                 'Content-Type': 'application/json'
@@ -20,7 +20,7 @@ export const fetchData = () => async (dispatch) => {
 
 export const homeBlogs = (pageNo) => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
-    let url = 'https://tired-cormorant.cyclic.app/blog'
+    let url = `${process.env.REACT_APP_URL}/blog`
 
     if (pageNo) {
         url += `?page=${pageNo}`
@@ -43,7 +43,7 @@ export const homeBlogs = (pageNo) => async (dispatch) => {
 
 export const signUpUser = async (user) => {
     try {
-        await axios.post(`https://tired-cormorant.cyclic.app/user/signup`, user, {
+        await axios.post(`${process.env.REACT_APP_URL}/user/signup`, user, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -58,7 +58,7 @@ export const signUpUser = async (user) => {
 export const postBlog = (blog) => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
     try {
-        await axios.post(`https://tired-cormorant.cyclic.app/blog/create`, blog, {
+        await axios.post(`${process.env.REACT_APP_URL}/blog/create`, blog, {
             headers: {
                 "Authorization": "Bearer " + token,
                 'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ export const postBlog = (blog) => async (dispatch) => {
 export const loginUser = (loginDetails) => async (dispatch) => {
     dispatch(login_load(true))
     try {
-        await axios.post(`https://tired-cormorant.cyclic.app/user/login`, loginDetails, {
+        await axios.post(`${process.env.REACT_APP_URL}/user/login`, loginDetails, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -101,7 +101,7 @@ export const loginUser = (loginDetails) => async (dispatch) => {
 
 export const logOut = () => async (dispatch) => {
     try {
-        axios.post(`https://tired-cormorant.cyclic.app/user/logout`, {
+        axios.post(`${process.env.REACT_APP_URL}/user/logout`, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -122,7 +122,7 @@ export const handleDeleteEmployee = (id) => async (dispatch) => {
     let token = JSON.parse(localStorage.getItem("token"))
 
     try {
-        await axios.delete(`https://tired-cormorant.cyclic.app/blog/delete/${id}`, {
+        await axios.delete(`${process.env.REACT_APP_URL}/blog/delete/${id}`, {
             headers: {
                 "Authorization": "Bearer " + token,
                 'Content-Type': 'application/json'
@@ -140,7 +140,7 @@ export const handleDeleteEmployee = (id) => async (dispatch) => {
 export const updateBlogObj = (id, obj, token) => async (dispatch) => {
 
     try {
-        await axios.patch(`https://tired-cormorant.cyclic.app/blog/edit/${id}`, obj, {
+        await axios.patch(`${process.env.REACT_APP_URL}/blog/edit/${id}`, obj, {
             headers: {
                 Authorization: 'Bearer ' + token,
                 'Content-Type': 'application/json',
@@ -158,7 +158,7 @@ export const updateBlogObj = (id, obj, token) => async (dispatch) => {
 export const singleBlogObj = (id) => async (dispatch) => {
     console.log(id)
     try {
-        axios.get(`https://tired-cormorant.cyclic.app/blog/single/${id}`).then(({ data }) => {
+        axios.get(`${process.env.REACT_APP_URL}/blog/single/${id}`).then(({ data }) => {
           
             dispatch(blogObj(data.single))
         })
