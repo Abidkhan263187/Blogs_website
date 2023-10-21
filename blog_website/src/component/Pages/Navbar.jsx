@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { who } = useSelector((store) => store);
-  const localWho = JSON.parse(localStorage.getItem('who')) || ''
+  const localWho = JSON.parse(sessionStorage.getItem('who')) || ''
 
   const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ export const Navbar = () => {
           <Box><Link id="lap_link" to={'/about'}>About</Link></Box>
           <Box><Link id="lap_link" to={'/reg'}>Register</Link></Box>
         </Flex>
-        {who && (
+        {localWho !== ''  && (
             <Button  id="lap_link" onClick={handleLogout}
              color={'white'} bg={'transparent'} size={'sm'}
               _hover={{ bg: 'transparent' }}>

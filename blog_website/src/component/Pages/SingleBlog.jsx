@@ -11,7 +11,7 @@ export const SingleBlog = () => {
 
 
 const {id}=useParams()
-console.log(id)
+// console.log(id)
   const {single}=useSelector((store)=>{
     return store
   })

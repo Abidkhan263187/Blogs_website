@@ -79,7 +79,7 @@ export const loginUser = (loginDetails) => async (dispatch) => {
         }).then(({ data }) => {
 
             localStorage.setItem('token', JSON.stringify(data.token));
-            localStorage.setItem('who', JSON.stringify(loginDetails.email));
+            sessionStorage.setItem('who', JSON.stringify(loginDetails.email));
             dispatch(whoLogin(loginDetails.email))
             dispatch(login(true))
             dispatch(login_load(false))
@@ -108,7 +108,7 @@ export const logOut = () => async (dispatch) => {
         }).then(({ data }) => {
 
             localStorage.setItem('token', JSON.stringify(data.token));
-            localStorage.setItem('who', JSON.stringify(""));
+            sessionStorage.setItem('who', JSON.stringify(""));
             dispatch(whoLogin(""))
             dispatch(login(false))
             // dispatch(fetchData());
@@ -131,7 +131,7 @@ export const handleDeleteEmployee = (id) => async (dispatch) => {
            
         })
         // dispatch(fetchData());
-        console.log("deleted")
+        // console.log("deleted")
     } catch (error) {
         console.log('Error deleting employee:', error);
     }
@@ -156,7 +156,7 @@ export const updateBlogObj = (id, obj, token) => async (dispatch) => {
 };
 
 export const singleBlogObj = (id) => async (dispatch) => {
-    console.log(id)
+    // console.log(id)
     try {
         axios.get(`${process.env.REACT_APP_URL}/blog/single/${id}`).then(({ data }) => {
           

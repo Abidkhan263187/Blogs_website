@@ -5,6 +5,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import '../Styles/login_signup.css'
 import { Navigate, useNavigate } from 'react-router-dom';
 import { Footer } from './Footer';
+import { GoogleLoginButton } from './GoogleLoginButton';
 
 const LoginForm = () => {
 
@@ -27,9 +28,9 @@ const LoginForm = () => {
 
 
   const handleLoginSubmit = (e) => {
-    console.log(login)
+    // console.log(login)
     e.preventDefault();
-    console.log(loginData)
+    // console.log(loginData)
     dispatch(loginUser(loginData))
      
     setLoginData({
@@ -68,6 +69,7 @@ const LoginForm = () => {
             />
           </FormControl>
           <Button type="submit">Login</Button>
+          {/* <Box> <GoogleLoginButton/> </Box> */}
         </Stack>
       </form>
     </Box>
