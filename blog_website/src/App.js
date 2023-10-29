@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import { Navbar } from './component/Pages/Navbar';
 import { AllRoutes } from './component/Routes/AllRoutes';
@@ -9,6 +9,7 @@ function App() {
     <div className="App">
       <Box mb={"30px"}>
         <Navbar />
+     
       </Box>
       <Box>
         <AllRoutes />

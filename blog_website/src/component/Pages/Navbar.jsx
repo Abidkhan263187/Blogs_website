@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const localWho = JSON.parse(sessionStorage.getItem('who')) 
+  const localWho = JSON.parse(sessionStorage.getItem('who')) || ''
 
   const navigate = useNavigate();
 
