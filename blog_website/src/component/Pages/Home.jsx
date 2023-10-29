@@ -14,8 +14,8 @@ export const Home = () => {
   // const [homeArray, setHomeArray] = useState([]);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch()
-  const { homeBlogArray } = useSelector((store) => {
-    return store
+  const  homeBlogArray = useSelector((store) => {
+    return store.homeBlogArray
   })
   function getDaysAgo(createdAt) {
     const currentDate = new Date();

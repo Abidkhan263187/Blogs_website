@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { who } = useSelector((store) => store);
-  const localWho = JSON.parse(sessionStorage.getItem('who')) || ''
+
+  const localWho = JSON.parse(sessionStorage.getItem('who')) 
 
   const navigate = useNavigate();
 
@@ -22,25 +22,23 @@ export const Navbar = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logOut());
+    dispatch(logOut(navigate));
     navigate('/reg');
   };
 
   return (
-    <HStack className="navbar" justifyContent={'space-between'}>
+    <HStack className="navbar"  justifyContent={'space-between'}>
       {/* Large screen navbar */}
 
       <Heading size={'md'} as={Link} to='/'     display={['block','block','none']}> <Image w={'30%'} borderRadius={'5px'} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE6yQm3ngwjr8vnk6SIafEFSjFny7-wQHeHogppLDRmF1qeH8MHN0fmLZc5dCj6xzgrjk&usqp=CAU"/></Heading>
-      <HStack display={['none', 'none', 'flex', 'flex']} justifyContent={'space-between'} className="navbar" spacing={20}>
+      <HStack display={['none', 'none', 'flex', 'flex']} justifyContent={'space-between'} w={'100%'}   spacing={20}>
       <Heading size={'md'}  as={Link} to='/' > <Image w={'20%'} borderRadius={'5px'} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE6yQm3ngwjr8vnk6SIafEFSjFny7-wQHeHogppLDRmF1qeH8MHN0fmLZc5dCj6xzgrjk&usqp=CAU"/></Heading>
-        <Flex w={'50%'} justifyContent={'space-between'} id="lap_2nd"  >
+        <Flex w={'50%'}     justifyContent={'space-between'} id="lap_2nd"  >
           <Box><Link id="lap_link" to={'/'}>Home</Link></Box>
           <Box><Link id="lap_link" to={'/dashboard'}>Dashboard</Link></Box>
           <Box><Link id="lap_link" to={'/create'}>Create</Link></Box>
           <Box><Link id="lap_link" to={'/about'}>About</Link></Box>
-          <Box><Link id="lap_link" to={'/reg'}>Register</Link></Box>
-        </Flex>
-        {localWho !== ''  && (
+          {localWho !== ''  ? (
             <Button  id="lap_link" onClick={handleLogout}
              color={'white'} bg={'transparent'} size={'sm'}
               _hover={{ bg: 'transparent' }}>
@@ -49,7 +47,9 @@ export const Navbar = () => {
                 </Button>
             
         
-        )}
+        ): <Box><Link id="lap_link" to={'/reg'}>Register</Link></Box>}
+        </Flex>
+       
 
 
       </HStack>
@@ -72,7 +72,7 @@ export const Navbar = () => {
           <Box><Link onClick={onClose} to={'/about'}>About</Link></Box>
           <Box><Link onClick={onClose} to={'/reg'}>Register</Link></Box>
         </Box>
-        {console.log(localWho)}
+        {/* {console.log(localWho)} */}
         {localWho !== '' && (
           <Button onClick={handleLogout} color={'white'} bg={'transparent'}
             size={'sm'} _hover={{ bg: 'transparent' }}>

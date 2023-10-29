@@ -3,16 +3,15 @@ import { Box, Button, FormControl, FormLabel, Heading, Input, Spinner, Stack } f
 import { loginUser, signUpUser } from '../Redux/api';
 import { useDispatch,useSelector } from 'react-redux'
 import '../Styles/login_signup.css'
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { Footer } from './Footer';
-import { GoogleLoginButton } from './GoogleLoginButton';
 
 const LoginForm = () => {
 
 
-  const {login}=useSelector((store)=>{
-    return store
-  })
+  // const login=useSelector((store)=>{
+  //   return store.login
+  // })
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',
@@ -28,11 +27,10 @@ const LoginForm = () => {
 
 
   const handleLoginSubmit = (e) => {
-    // console.log(login)
-    e.preventDefault();
-    // console.log(loginData)
-    dispatch(loginUser(loginData))
-     
+ 
+    e.preventDefault()
+    dispatch(loginUser(loginData,navigate))
+    
     setLoginData({
       email: '',
       password: '',
@@ -154,8 +152,8 @@ const LoginFormToggle = () => {
     setIsLoginForm(!isLoginForm);
   };
   
-  const {login_loading} = useSelector((store)=>{
-    return store
+  const login_loading = useSelector((store)=>{
+    return store.login_loading
   })
 
   return (
@@ -189,7 +187,7 @@ const LoginFormToggle = () => {
     </Box>)}
     
     
-    <Footer /></>
+   </>
   );
 };
 

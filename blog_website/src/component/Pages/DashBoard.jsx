@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, Modal, ModalOverlay, ModalContent, ModalHeader, Textarea, ModalFooter, ModalBody, ModalCloseButton, FormControl, FormLabel, Input, Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, Avatar, Heading, Text, Spinner, MenuButton, MenuItem, MenuList, Menu, Spacer, Center } from '@chakra-ui/react';
+import { Image, Modal, ModalOverlay, ModalContent, ModalHeader, Textarea, ModalFooter, ModalBody, ModalCloseButton, FormControl, FormLabel, Input, Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, Avatar, Heading, Text, Spinner, MenuButton, MenuItem, MenuList, Menu, Spacer, Center, useDisclosure } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleDeleteEmployee, updateBlogObj } from '../Redux/api';
 import '../Styles/home.css';
@@ -23,7 +23,8 @@ export const DashBoard = () => {
   ];
   const dispatch = useDispatch();
   // modal part 
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure()
   const [editID, setEditID] = useState('')
   const [updateBlog, setUpdateBlog] = useState({
     title: '',
@@ -43,17 +44,15 @@ export const DashBoard = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const handleOpen = (id) => {
-    setIsOpen(true);
+   onOpen()
     setEditID(id)
   }
 
- 
-
   const [Loading, setLoad] = useState(true)
-  const token = JSON.parse(localStorage.getItem('token'));
-  const { login } = useSelector((store) => {
-    return store
-  })
+  const token = JSON.parse(sessionStorage.getItem('token'));
+  // const { login } = useSelector((store) => {
+  //   return store
+  // })
   let currePage=1
   const [pageNo,setPageNo]=useState(currePage)
 
@@ -116,7 +115,8 @@ export const DashBoard = () => {
     dispatch(updateBlogObj(editID, updateBlog, token))
     getData()
     setLoad(!Loading)
-    setIsOpen(false)
+    // setIsOpen(false)
+    onClose()
   }
 
 
@@ -132,9 +132,10 @@ export const DashBoard = () => {
    
  
 }
+
   return (
     <Box>
-      <Heading p={'5px'} mt={['100px','','','60px']} size={'lg'}>My Blogs</Heading>
+      <Heading p={'5px'} mt={['80px','','','100px']} size={'lg'} >My Blogs</Heading>
       <Flex justifyContent={'space-between'} direction={["column", "row"]}  className='sorting_nav'>
         <Flex className='sorting_nav_left' alignItems={"center"} justifyContent={'space-between'}  w={["100%","","","35%"]} onClick={(e) => {
           setSearchParams({
@@ -224,7 +225,7 @@ export const DashBoard = () => {
               </CardFooter>
 
             </Card>
-              <Modal isOpen={isOpen} onClose={!isOpen}>
+              <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
                   <ModalHeader>Update your Blog</ModalHeader>

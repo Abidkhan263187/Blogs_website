@@ -69,7 +69,7 @@ export const postBlog = (blog) => async (dispatch) => {
         console.log(error)
     }
 }
-export const loginUser = (loginDetails) => async (dispatch) => {
+export const loginUser = (loginDetails,navigate) => async (dispatch) => {
     dispatch(login_load(true))
     try {
         await axios.post(`${process.env.REACT_APP_URL}/user/login`, loginDetails, {
@@ -78,28 +78,28 @@ export const loginUser = (loginDetails) => async (dispatch) => {
             }
         }).then(({ data }) => {
 
-            localStorage.setItem('token', JSON.stringify(data.token));
+            sessionStorage.setItem('token', JSON.stringify(data.token));
             sessionStorage.setItem('who', JSON.stringify(loginDetails.email));
             dispatch(whoLogin(loginDetails.email))
-            dispatch(login(true))
+            // dispatch(login(true))
+            navigate('/')
             dispatch(login_load(false))
-           
+         
+          
 
-            // dispatch(fetchData());
-            // dispatch(setLoading(true));
         })
 
     } catch (error) {
-        dispatch(login(false))
+        // dispatch(login(false))
         alert("login failed")
         dispatch(login_load(false))
-       
+     
 
         console.log("error while login", error)
     }
 }
 
-export const logOut = () => async (dispatch) => {
+export const logOut = (navigate) => async (dispatch) => {
     try {
         axios.post(`${process.env.REACT_APP_URL}/user/logout`, {
             headers: {
@@ -107,11 +107,12 @@ export const logOut = () => async (dispatch) => {
             }
         }).then(({ data }) => {
 
-            localStorage.setItem('token', JSON.stringify(data.token));
+            sessionStorage.setItem('token', JSON.stringify(data.token));
             sessionStorage.setItem('who', JSON.stringify(""));
             dispatch(whoLogin(""))
             dispatch(login(false))
             // dispatch(fetchData());
+           navigate('/reg')
         })
     } catch (error) {
 

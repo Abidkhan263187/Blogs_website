@@ -1,6 +1,7 @@
 .navbar {
 
   justify-content: space-around;
+  width: 100%;
   gap: 60px;
   padding: 15px;
   background-color: #068181;
@@ -9,12 +10,15 @@
   position: fixed;
   color: white;
   top: 0;
-  left: 0;
-  right: 0;
+
   z-index: 9999;
+  margin-bottom: 100px;
+  justify-content: space-between;
+
   /* Adjust the z-index value as needed */
 }
-#lap_link:hover{
+
+#lap_link:hover {
   background-color: #05a7a7;
   border-radius: 5px;
 }
@@ -22,7 +26,8 @@
 .navbar>div a {
   padding: 5px 10px;
 }
-#lap_2nd{
+
+#lap_2nd {
   margin-left: -100px;
 }
 
@@ -34,8 +39,7 @@
   z-index: 9999;
   background-color: rgb(54, 54, 54);
   border: 1px solid gray;
-  border-radius: 10px
-  ;
+  border-radius: 10px;
 }
 
 .navbarTwo>div a {
